@@ -38,32 +38,43 @@ public class DiscWeek6_fixed{
 	}
 
 	public static void main(String[] args){
-		// Declare variables
+		// Declare variables and create print strings
 		String classInfo = "\nName: Luttrell, Bryan\t\tCMIS 141/6382\t\tDate: 09/22/2021\n";
+
 		String banner = 
-		 "/./../././    0000000000    TTTTTTTTTT\n"
-		+"/./    /./    000    000        TT\n"
-		+"/./    /./    000    000        TT\n"
-		+"/./.././      000    000        TT\n"
-		+"/./   /./     000    000        TT\n"
-		+"/./    /./    000    000        TT\n"
-		+"/./     /./   0000000000        TT";
+		 "\t\t\t/./../././    0000000000    TTTTTTTTTT\n"
+		+"\t\t\t/./    /./    000    000        TT\n"
+		+"\t\t\t/./    /./    000    000        TT\n"
+		+"\t\t\t/./.././      000    000        TT\n"
+		+"\t\t\t/./   /./     000    000        TT\n"
+		+"\t\t\t/./    /./    000    000        TT\n"
+		+"\t\t\t/./     /./   0000000000        TT\tv1.3.0";
+		
+		String desc =
+		"This is a ROT cipher. A ROT cipher is a rotational cipher. It takes a string from a user\n"
+		+"and asks for a number to shift (1-26), and shifts the alphabet by that amount. It is a\n"
+		+"fairly simple encoding scheme you may see in some basic CTF (Capture the flag) challenges\n"
+		+"which goes with the theme of the week from the Professor about cyber challenges. Enjoy!";
+
+	        String error = "INPUT VALIDATION ERROR -- You must enter a value between 1 and 26!\nWhat would you like the shift to be (1-26)? ";
+
 	        Scanner scanStr = new Scanner(System.in);
 	        Scanner scanByte = new Scanner(System.in);
 	        byte shift = 0;
 	        String line = "*";          
-	        String error = "INPUT VALIDATION ERROR -- You must enter a value between 1 and 26!\nWhat would you like the shift to be (1-26)? ";
 		String encMsg = null;
 		String oldMsg = "";
 	
 		// Print class header
 		System.out.println(classInfo);
 	
-	        // Get input
-	        System.out.println("\n" + line.repeat(50) + "\n"); // repeat decorations
-	        System.out.println(banner + "\n"); // repeat decorations
-	        System.out.println("This is a ROT cipher. A ROT cipher is a rotational cipher. It takes a string from a user, and asks for a number to shift (1-26), and shifts the alphabet by that amount. It is a fairly simple encoding scheme you may see in some basic CTF (Capture the flag) challenges; this goes with the theme of the week from the Professor about cyber challenges. Enjoy!");
-	        System.out.println("\n" + line.repeat(50) + "\n"); // repeat decorations
+	        // Print program information
+	        System.out.println("\n" + line.repeat(90) + "\n"); // repeat decorations
+	        System.out.println(banner + "\n"); // print the ROT banner
+	        System.out.println(desc); // print the program description
+	        System.out.println("\n" + line.repeat(90) + "\n"); // repeat decorations
+
+		// Get input from user
 		while (oldMsg.equals("")) {
 		        System.out.print("Enter a message to encode with ROT: ");
 			oldMsg = scanStr.nextLine().toLowerCase();
@@ -85,9 +96,9 @@ public class DiscWeek6_fixed{
 		encMsg = encodeROT(oldMsg, (byte)shift);
 		
 		// Print the message out!
-	        System.out.println("\n" + line.repeat(50) + "\n"); // repeat decorations
+	        System.out.println("\n" + line.repeat(90) + "\n"); // repeat decorations
 		System.out.println(oldMsg + "\nwas changed to the below using a ROT-" + shift + " cipher!\n" + encMsg);
-	        System.out.println("\n" + line.repeat(50) + "\n"); // repeat decorations
+	        System.out.println("\n" + line.repeat(90) + "\n"); // repeat decorations
 
 		// Close scanners
 		scanStr.close();
